@@ -201,6 +201,9 @@ textarea { min-height: 110px; resize: vertical; }
 
 .cal-links { display: grid; gap: 10px; justify-items: start; }
 .cal-links .btn { width: 100%; max-width: 380px; justify-content: center; }
+.legal { flex-basis: 100%; }
+.legal summary { cursor: pointer; font-weight: 600; color: var(--ink); }
+.legal-body { display: grid; gap: 6px; margin-top: 12px; max-width: 70ch; }
 footer { border-top: 1px solid var(--line); padding-block: 32px; color: var(--ink-soft); font-size: 0.88rem; }
 footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 </style>
@@ -457,7 +460,18 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 <footer>
   <div class="wrap">
     <span>Einat Guedj · Formation à Claude · Paris et visio · <a href="https://www.linkedin.com/in/einat-guedj" target="_blank" rel="noopener">LinkedIn</a></span>
-    <span>Formation Claude pour indépendants, TPE et équipes</span>
+    <span>SIRET 107 035 206 00013 · TVA non applicable, article 293 B du CGI</span>
+    <details class="legal">
+      <summary>Mentions légales</summary>
+      <div class="legal-body">
+        <p><strong>Éditrice :</strong> Einat Guedj, entrepreneuse individuelle. SIRET 107 035 206 00013.</p>
+        <p><strong>Contact :</strong> einat.guedj@gmail.com · 06 31 35 09 82</p>
+        <p><strong>TVA :</strong> TVA non applicable, article 293 B du CGI.</p>
+        <p><strong>Hébergeur :</strong> GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
+        <p><strong>Cookies :</strong> ce site ne dépose aucun cookie. La prise de rendez-vous se fait sur Cal.com, qui a ses propres conditions.</p>
+        <p>Formatrice indépendante, sans lien officiel avec Anthropic. Claude est une marque d'Anthropic.</p>
+      </div>
+    </details>
   </div>
 </footer>
 
