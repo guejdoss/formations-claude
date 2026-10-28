@@ -183,6 +183,10 @@ textarea { min-height: 110px; resize: vertical; }
 .cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .case { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 26px; display: grid; gap: 8px; align-content: start; transition: transform .2s ease, box-shadow .2s ease; }
 .case:hover { transform: translateY(-3px); box-shadow: 0 24px 48px -36px rgba(30, 50, 80, .5); }
+.case-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.case .ico { width: 40px; height: 40px; background: var(--glow-2); border: 0; }
+.section-head p.one-line { max-width: none; white-space: nowrap; }
+@media (max-width: 760px) { .section-head p.one-line { white-space: normal; } }
 .case-tag { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
 .case h3 { font-size: 1.15rem; }
 .case p:last-child { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.55; }
@@ -192,6 +196,15 @@ textarea { min-height: 110px; resize: vertical; }
 @media (max-width: 900px) { .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .cases { grid-template-columns: minmax(0, 1fr); } }
 
+.cal-box { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 20px; margin-bottom: 72px; }
+.choix { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.choix button { font: inherit; font-size: 0.92rem; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
+.choix button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.booking { border-radius: 14px; overflow: auto; }
+.booking:has(iframe) { min-height: 520px; }
+.booking-wait { color: var(--ink-soft); padding: 24px 4px; }
+#exemples .section-head, #reserver .section-head:first-child { max-width: none; }
+@media (max-width: 560px) { .cal-box { padding: 12px; border-radius: 16px; } .choix button { flex: 1 1 100%; } }
 .cal-links { display: grid; gap: 10px; justify-items: start; }
 .cal-links .btn { width: 100%; max-width: 380px; justify-content: center; }
 .legal { flex-basis: 100%; }
@@ -227,7 +240,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
         <h1 style="margin-top:20px">Gagnez des heures chaque semaine avec <mark>Claude</mark>.</h1>
         <p class="lead">Je vous apprends à utiliser Claude comme je l'utilise au quotidien, sur vos vraies tâches et vos vrais fichiers, et connecté à vos outils : Gmail, Google Drive, Agenda, Notion.</p>
         <div class="ctas">
-          <a class="btn btn-primary" href="https://cal.com/einatguedj/formation" target="_blank" rel="noopener">Réserver un appel découverte</a>
+          <a class="btn btn-primary" href="#reserver" data-slug="formation">Réserver un appel découverte</a>
           <a class="btn btn-ghost" href="#offre">Voir les tarifs</a>
         </div>
         <p class="launch"><strong>Lancement :</strong> les 5 premières séances à 100 € <s>150 €</s>, contre votre avis.</p>
@@ -245,22 +258,22 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       <div class="section-head">
         <p class="label">Ce que vous saurez faire</p>
         <h2>Ce que <mark>Claude</mark> fait déjà pour ceux qui savent s'en servir</h2>
-        <p>Quelques exemples parmi beaucoup d'autres. Le comment, on le voit ensemble en séance, sur vos propres dossiers.</p>
+        <p class="one-line">Quelques exemples parmi d'autres. Le comment, on le voit ensemble en séance.</p>
       </div>
       <div class="cases">
-        <article class="case"><p class="case-tag">Mails</p><h3>Votre boîte mail triée en deux minutes</h3><p>Claude lit vos mails de la semaine et vous dit lesquels attendent vraiment une réponse.</p></article>
-        <article class="case"><p class="case-tag">Documents</p><h3>Un contrat de 40 pages, lu pour vous</h3><p>Les clauses à surveiller, les dates, les montants, ce qui manque. Avant même votre café.</p></article>
-        <article class="case"><p class="case-tag">Rendez-vous</p><h3>Arriver préparé à chaque rendez-vous</h3><p>Il croise le site du client, vos échanges et votre agenda, et vous donne les questions à poser.</p></article>
-        <article class="case"><p class="case-tag">Chiffres</p><h3>Votre fichier Excel enfin parlant</h3><p>Les chiffres clés, les tendances et les graphiques, sans formule ni tableau croisé.</p></article>
-        <article class="case"><p class="case-tag">Communication</p><h3>Un mois de posts en une heure</h3><p>Dans votre ton, sur vos sujets, prêts à publier sur LinkedIn ou Instagram.</p></article>
-        <article class="case"><p class="case-tag">Créer</p><h3>Votre outil sur mesure, sans coder</h3><p>Un suivi de clients, un simulateur de prix, une page de présentation, un site en trois langues.</p></article>
-        <article class="case"><p class="case-tag">Veille</p><h3>Une recherche complète, avec les sources</h3><p>Concurrents, aides publiques, réglementation : Claude cherche, compare et cite ses sources.</p></article>
-        <article class="case"><p class="case-tag">Réunions</p><h3>Des notes en vrac au compte rendu net</h3><p>Décisions, actions, responsables, dates. Rangé directement dans votre Notion.</p></article>
-        <article class="case"><p class="case-tag">Routine</p><h3>Le travail qui se fait tout seul</h3><p>Chaque lundi matin, le résumé de votre semaine qui vous attend. Une fois réglé, vous n'y pensez plus.</p></article>
+        <article class="case"><div class="case-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><p class="case-tag">Mails</p></div><h3>Votre boîte mail triée en deux minutes</h3><p>Claude lit vos mails de la semaine et vous dit lesquels attendent vraiment une réponse.</p></article>
+        <article class="case"><div class="case-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span><p class="case-tag">Documents</p></div><h3>Un contrat de 40 pages, lu pour vous</h3><p>Les clauses à surveiller, les dates, les montants, ce qui manque. Avant même votre café.</p></article>
+        <article class="case"><div class="case-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></svg></span><p class="case-tag">Rendez-vous</p></div><h3>Arriver préparé à chaque rendez-vous</h3><p>Il croise le site du client, vos échanges et votre agenda, et vous donne les questions à poser.</p></article>
+        <article class="case"><div class="case-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><p class="case-tag">Chiffres</p></div><h3>Votre fichier Excel enfin parlant</h3><p>Les chiffres clés, les tendances et les graphiques, sans formule ni tableau croisé.</p></article>
+        <article class="case"><div class="case-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h3l6 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M17 9a4 4 0 0 1 0 6M19.5 6.5a8 8 0 0 1 0 11"/></svg></span><p class="case-tag">Communication</p></div><h3>Un mois de posts en une heure</h3><p>Dans votre ton, sur vos sujets, prêts à publier sur LinkedIn ou Instagram.</p></article>
+        <article class="case"><div class="case-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l10-10M14 6l4 4M15 3l1 2 2 1-2 1-1 2-1-2-2-1 2-1zM19 13l.6 1.4L21 15l-1.4.6L19 17l-.6-1.4L17 15l1.4-.6z"/></svg></span><p class="case-tag">Créer</p></div><h3>Votre outil sur mesure, sans coder</h3><p>Un suivi de clients, un simulateur de prix, une page de présentation, un site en trois langues.</p></article>
+        <article class="case"><div class="case-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg></span><p class="case-tag">Veille</p></div><h3>Une recherche complète, avec les sources</h3><p>Concurrents, aides publiques, réglementation : Claude cherche, compare et cite ses sources.</p></article>
+        <article class="case"><div class="case-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6l1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></svg></span><p class="case-tag">Réunions</p></div><h3>Des notes en vrac au compte rendu net</h3><p>Décisions, actions, responsables, dates. Rangé directement dans votre Notion.</p></article>
+        <article class="case"><div class="case-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M12 7v5l3 2"/></svg></span><p class="case-tag">Routine</p></div><h3>Le travail qui se fait tout seul</h3><p>Chaque lundi matin, le résumé de votre semaine qui vous attend. Une fois réglé, vous n'y pensez plus.</p></article>
       </div>
       <div class="cases-cta">
         <p>Et vous, qu'est-ce que vous aimeriez ne plus jamais faire à la main ?</p>
-        <a class="btn btn-primary" href="https://cal.com/einatguedj/formation" target="_blank" rel="noopener">En parler pendant 10 minutes</a>
+        <a class="btn btn-primary" href="#reserver" data-slug="formation">En parler pendant 10 minutes</a>
       </div>
     </div>
   </section>
@@ -282,7 +295,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
             <li>Une courte démonstration de Claude</li>
             <li>Je vous conseille le bon format</li>
           </ul>
-          <a class="pick" href="https://cal.com/einatguedj/formation" target="_blank" rel="noopener">Choisir un créneau →</a>
+          <a class="pick" href="#reserver" data-slug="formation">Choisir un créneau →</a>
         </article>
         <article class="offer featured">
           <p class="label">Le plus demandé</p>
@@ -293,7 +306,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
             <li>Vos réflexes installés sur votre ordinateur</li>
             <li>Fiche mémo envoyée après la séance</li>
           </ul>
-          <a class="pick" href="https://cal.com/einatguedj/seance-claude" target="_blank" rel="noopener">Choisir un créneau →</a>
+          <a class="pick" href="#reserver" data-slug="seance-claude">Choisir un créneau →</a>
         </article>
         <article class="offer">
           <p class="label">Pour changer d'habitudes</p>
@@ -304,7 +317,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
             <li>On mesure le temps gagné</li>
             <li>Questions par message entre les séances</li>
           </ul>
-          <a class="pick" href="https://cal.com/einatguedj/pack-claude" target="_blank" rel="noopener">Choisir mes créneaux →</a>
+          <a class="pick" href="#reserver" data-slug="pack-claude">Choisir mes créneaux →</a>
         </article>
         <article class="offer">
           <p class="label">Pour les équipes</p>
@@ -315,7 +328,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
             <li>Programme adapté à votre activité</li>
             <li>Mémo et modèles partagés à l'équipe</li>
           </ul>
-          <a class="pick" href="https://cal.com/einatguedj/atelier-equipe" target="_blank" rel="noopener">Préparer l'atelier →</a>
+          <a class="pick" href="#reserver" data-slug="atelier-equipe">Préparer l'atelier →</a>
         </article>
       </div>
     </div>
@@ -371,17 +384,27 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 
 
   <section id="reserver">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label">Réserver</p>
+        <h2>Choisissez votre créneau</h2>
+        <p class="one-line">Vous hésitez sur le format ? Commencez par l'appel découverte de 10 minutes.</p>
+      </div>
+      <div class="cal-box">
+        <div id="cal-choix" class="choix" role="group" aria-label="Choisir le rendez-vous">
+          <button type="button" data-pick="formation" aria-pressed="true">Appel découverte · 10 min · offert</button>
+          <button type="button" data-pick="seance-claude" aria-pressed="false">Séance · 1 h 30 · 150 €</button>
+          <button type="button" data-pick="pack-claude" aria-pressed="false">Pack 3 séances · 390 €</button>
+          <button type="button" data-pick="atelier-equipe" aria-pressed="false">Atelier d'équipe · préparation</button>
+        </div>
+        <div id="booking" class="booking"><p class="booking-wait">Chargement de l'agenda…</p></div>
+      </div>
+    </div>
     <div class="wrap book">
       <div class="section-head" style="margin-bottom:0">
-        <p class="label">Réserver</p>
+        <p class="label">Ou par message</p>
         <h2>Dites-moi ce qui vous prend du temps</h2>
-        <p>Choisissez directement votre créneau en ligne. Vous hésitez sur le format ? Commencez par l'appel découverte de 10 minutes. Vous préférez m'écrire ? Le formulaire prépare votre message, à m'envoyer par mail ou par WhatsApp.</p>
-        <div class="cal-links">
-          <a class="btn btn-primary" href="https://cal.com/einatguedj/formation" target="_blank" rel="noopener">Appel découverte · 10 min · offert</a>
-          <a class="btn btn-ghost" href="https://cal.com/einatguedj/seance-claude" target="_blank" rel="noopener">Séance individuelle · 1 h 30 · 150 €</a>
-          <a class="btn btn-ghost" href="https://cal.com/einatguedj/pack-claude" target="_blank" rel="noopener">Pack 3 séances · 390 €</a>
-          <a class="btn btn-ghost" href="https://cal.com/einatguedj/atelier-equipe" target="_blank" rel="noopener">Atelier d'équipe · appel de préparation</a>
-        </div>
+        <p>Vous préférez m'écrire plutôt que réserver dans l'agenda ci-dessus ? Le formulaire prépare votre message, à m'envoyer par mail ou par WhatsApp.</p>
         <div class="contact-lines">
           <div><span class="label">Mail</span><span><span class="nw">einat.guedj@gmail.com</span></span></div>
           <div><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/einat-guedj" target="_blank" rel="noopener" class="nw">linkedin.com/in/einat-guedj</a></div>
@@ -553,6 +576,33 @@ document.getElementById("copy").addEventListener("click", () => {
     navigator.clipboard.writeText(text).then(() => { status.textContent = "Message copié. Collez-le dans un mail ou sur WhatsApp."; }, fallback);
   } catch (e) { fallback(); }
 });
+
+// Réservation : agenda Cal.com intégré dans la page, sans quitter le site.
+(() => {
+  const user = "einatguedj";
+  const choix = document.getElementById("cal-choix"), booking = document.getElementById("booking");
+  const inArtifact = /claude/.test(location.hostname) || location.protocol === "file:";
+  let current = "formation";
+  const press = slug => choix.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.pick === slug));
+  const fallback = () => {
+    booking.innerHTML = '<p class="booking-wait">L\'agenda ne s\'affiche pas ici. <a href="https://cal.com/' + user + '/' + current + '" target="_blank" rel="noopener">Ouvrir le calendrier</a></p>';
+  };
+  let show = slug => { current = slug; press(slug); fallback(); };
+  if (!inArtifact) {
+    (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", { origin: "https://cal.com" });
+    Cal("ui", { theme: "light", cssVarsPerTheme: { light: { "cal-brand": "#3d5a80" } }, hideEventTypeDetails: false, layout: "month_view" });
+    show = slug => {
+      if (slug === current && booking.querySelector("iframe")) { press(slug); return; }
+      current = slug; press(slug); booking.innerHTML = "";
+      Cal("inline", { elementOrSelector: "#booking", calLink: user + "/" + slug, layout: "month_view" });
+    };
+    show("formation");
+    setTimeout(() => { if (!booking.querySelector("iframe")) fallback(); }, 8000);
+  } else fallback();
+  choix.addEventListener("click", e => { const b = e.target.closest("button"); if (b) show(b.dataset.pick); });
+  document.querySelectorAll("a[data-slug]").forEach(a => a.addEventListener("click", () => show(a.dataset.slug)));
+})();
 </script>
 
 </body>
