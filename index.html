@@ -193,7 +193,8 @@ textarea { min-height: 110px; resize: vertical; }
 .case h3 { font-size: 1.15rem; }
 .case p:last-child { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.55; }
 .cases-cta { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; background: var(--dark-card); color: var(--dark-card-ink); border-radius: 22px; padding: 26px 30px; }
-.cases-cta p { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.015em; max-width: 34ch; }
+.cases-cta p { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.015em; line-height: 1.35; margin: 0; flex: 1 1 320px; }
+.cases-cta .btn { flex: none; }
 .cases-cta .btn-primary { background: var(--bg); color: var(--ink); }
 @media (max-width: 900px) { .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .cases { grid-template-columns: minmax(0, 1fr); } }
