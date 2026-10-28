@@ -204,7 +204,9 @@ textarea { min-height: 110px; resize: vertical; }
 .choix button { font: inherit; font-size: 0.92rem; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
 .choix button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
 .booking { border-radius: 14px; overflow: auto; }
-.booking:has(iframe) { min-height: 520px; }
+.booking:has(iframe) { min-height: 520px; max-height: min(640px, 78vh); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.booking-hint { margin: 10px 4px 0; font-size: 0.85rem; color: var(--ink-soft); display: none; }
+.cal-box:has(#booking iframe) .booking-hint { display: block; }
 .booking-wait { color: var(--ink-soft); padding: 24px 4px; }
 #exemples .section-head, #reserver .section-head:first-child { max-width: none; }
 @media (max-width: 560px) { .cal-box { padding: 12px; border-radius: 16px; } .choix button { flex: 1 1 100%; } }
@@ -401,6 +403,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
           <button type="button" data-pick="atelier-equipe" aria-pressed="false">Atelier d'équipe · préparation</button>
         </div>
         <div id="booking" class="booking"><p class="booking-wait">Chargement de l'agenda…</p></div>
+        <p class="booking-hint">↓ Faites défiler l'agenda pour voir tous les créneaux.</p>
       </div>
     </div>
     <div class="wrap book">
