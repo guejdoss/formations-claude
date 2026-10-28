@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Einat Guedj Formation Claude</title>
+<title>Formation Claude</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f6f1ea'/%3E%3Ctext x='31' y='47' text-anchor='middle' font-family='Georgia,Times New Roman,serif' font-style='italic' font-size='46' fill='%23b5654a'%3EC%3C/text%3E%3C/svg%3E">
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Formation à Claude, l'IA d'Anthropic, pour indépendants, TPE et équipes, à Paris et en visio. Séances individuelles et ateliers sur vos vraies tâches.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +57,8 @@ mark { background: none; color: var(--clay); font-family: var(--font-serif); fon
 header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
 header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 16px; }
 .brand { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em; text-decoration: none; color: var(--ink); white-space: nowrap; }
-.brand span { color: var(--ink-soft); font-weight: 500; }
+.brand { display: inline-flex; align-items: center; gap: 10px; }
+.brand .logo { width: 32px; height: 32px; border-radius: 9px; background: #f6f1ea; border: 1px solid var(--line); color: var(--clay); font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 1.35rem; display: grid; place-items: center; line-height: 1; padding-bottom: 2px; }
 nav.links { display: flex; gap: 28px; align-items: center; }
 nav.links a { color: var(--ink-soft); text-decoration: none; font-size: 0.92rem; font-weight: 500; }
 nav.links a:hover { color: var(--ink); }
@@ -66,7 +68,7 @@ nav.links a:hover { color: var(--ink); }
 .btn-ghost { background: var(--card); color: var(--ink); border-color: var(--line); }
 nav.links .btn { padding: 9px 18px; background: var(--ink); color: var(--bg); font-size: 0.88rem; }
 @media (max-width: 760px) { nav.links a:not(.btn) { display: none; } }
-@media (max-width: 440px) { .brand span { display: none; } }
+
 
 .hero { padding-block: 88px 88px; background: radial-gradient(110% 90% at 88% 0%, var(--glow-1) 0%, var(--glow-2) 42%, var(--bg) 78%); }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 64px; align-items: center; }
@@ -220,7 +222,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top">Einat Guedj <span>· Formation <mark>Claude</mark></span></a>
+    <a class="brand" href="#top"><span class="logo" aria-hidden="true">C</span><span>Formation <mark>Claude</mark></span></a>
     <nav class="links" aria-label="Navigation principale">
       <a href="#exemples">Exemples</a>
       <a href="#offre">Tarifs</a>
