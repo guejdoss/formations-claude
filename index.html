@@ -78,6 +78,7 @@ nav.links .btn { padding: 9px 18px; background: var(--ink); color: var(--bg); fo
 .launch { margin-top: 28px; display: inline-block; font-size: 0.93rem; color: var(--ink-soft); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; }
 .launch strong { color: var(--ink); font-weight: 700; }
 .launch s { opacity: .6; }
+@media (max-width: 560px) { .hero .ctas { display: grid; grid-template-columns: minmax(0, 1fr); } .hero .ctas .btn { width: 100%; justify-content: center; } .launch { display: block; border-radius: 16px; } }
 
 .demo { background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: 0 40px 80px -48px rgba(30, 50, 80, .45); min-width: 0; overflow: hidden; }
 .demo-tabs { display: flex; flex-wrap: wrap; gap: 6px; padding: 16px 16px 0; }
@@ -254,7 +255,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
           <a class="btn btn-primary" href="#reserver" data-slug="formation">Réserver un appel découverte</a>
           <a class="btn btn-ghost" href="#offre">Voir les tarifs</a>
         </div>
-        <p class="launch"><strong>Lancement :</strong> les 5 premières séances à 100 € <s>150 €</s>, contre votre avis.</p>
+        <p class="launch"><strong>Lancement :</strong> les 5 premières séances à <span class="nw">100&nbsp;€ <s>150&nbsp;€</s></span>, contre votre avis.</p>
       </div>
 
       <div class="demo" aria-label="Exemples de tâches faites avec Claude">
