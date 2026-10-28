@@ -177,6 +177,7 @@ textarea { min-height: 110px; resize: vertical; }
 .status { font-size: 0.9rem; color: var(--accent); min-height: 1.2em; }
 .contact-lines { display: grid; gap: 10px; margin-top: 24px; }
 .contact-lines div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 10px; align-items: baseline; }
+@media (max-width: 400px) { .contact-lines div { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
 .contact-lines .todo { color: var(--ink-soft); font-style: italic; }
 
 .cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
@@ -196,6 +197,7 @@ textarea { min-height: 110px; resize: vertical; }
 .legal { flex-basis: 100%; }
 .legal summary { cursor: pointer; font-weight: 600; color: var(--ink); }
 .legal-body { display: grid; gap: 6px; margin-top: 12px; max-width: 70ch; }
+.nw { white-space: nowrap; }
 footer { border-top: 1px solid var(--line); padding-block: 32px; color: var(--ink-soft); font-size: 0.88rem; }
 footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 </style>
@@ -381,9 +383,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
           <a class="btn btn-ghost" href="https://cal.com/einatguedj/atelier-equipe" target="_blank" rel="noopener">Atelier d'équipe · appel de préparation</a>
         </div>
         <div class="contact-lines">
-          <div><span class="label">Mail</span><span>einat.guedj@gmail.com</span></div>
-          <div><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/einat-guedj" target="_blank" rel="noopener">linkedin.com/in/einat-guedj</a></div>
-          <div><span class="label">WhatsApp</span><span>06 31 35 09 82</span></div>
+          <div><span class="label">Mail</span><span><span class="nw">einat.guedj@gmail.com</span></span></div>
+          <div><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/einat-guedj" target="_blank" rel="noopener" class="nw">linkedin.com/in/einat-guedj</a></div>
+          <div><span class="label">WhatsApp</span><span><span class="nw">06&nbsp;31&nbsp;35&nbsp;09&nbsp;82</span></span></div>
         </div>
       </div>
       <form id="book-form" novalidate>
@@ -460,12 +462,12 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 <footer>
   <div class="wrap">
     <span>Einat Guedj · Formation à Claude · Paris et visio · <a href="https://www.linkedin.com/in/einat-guedj" target="_blank" rel="noopener">LinkedIn</a></span>
-    <span>SIRET 107 035 206 00013 · TVA non applicable, article 293 B du CGI</span>
+    <span>SIRET <span class="nw">107&nbsp;035&nbsp;206&nbsp;00013</span> · TVA non applicable, article 293 B du CGI</span>
     <details class="legal">
       <summary>Mentions légales</summary>
       <div class="legal-body">
-        <p><strong>Éditrice :</strong> Einat Guedj, entrepreneuse individuelle. SIRET 107 035 206 00013.</p>
-        <p><strong>Contact :</strong> einat.guedj@gmail.com · 06 31 35 09 82</p>
+        <p><strong>Éditrice :</strong> Einat Guedj, entrepreneuse individuelle. SIRET <span class="nw">107&nbsp;035&nbsp;206&nbsp;00013</span>.</p>
+        <p><strong>Contact :</strong> <span class="nw">einat.guedj@gmail.com</span><br><span class="nw">06&nbsp;31&nbsp;35&nbsp;09&nbsp;82</span></p>
         <p><strong>TVA :</strong> TVA non applicable, article 293 B du CGI.</p>
         <p><strong>Hébergeur :</strong> GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
         <p><strong>Cookies :</strong> ce site ne dépose aucun cookie. La prise de rendez-vous se fait sur Cal.com, qui a ses propres conditions.</p>
