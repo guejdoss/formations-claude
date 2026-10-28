@@ -199,6 +199,8 @@ textarea { min-height: 110px; resize: vertical; }
 @media (max-width: 900px) { .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .cases { grid-template-columns: minmax(0, 1fr); } }
 
+.cal-links { display: grid; gap: 10px; justify-items: start; }
+.cal-links .btn { width: 100%; max-width: 380px; justify-content: center; }
 footer { border-top: 1px solid var(--line); padding-block: 32px; color: var(--ink-soft); font-size: 0.88rem; }
 footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 </style>
@@ -294,7 +296,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
             <li>Vos réflexes installés sur votre ordinateur</li>
             <li>Fiche mémo envoyée après la séance</li>
           </ul>
-          <a class="pick" href="#reserver" data-format="Séance individuelle (150 €)">Réserver →</a>
+          <a class="pick" href="https://cal.com/einatguedj/seance-claude" target="_blank" rel="noopener">Choisir un créneau →</a>
         </article>
         <article class="offer">
           <p class="label">Pour changer d'habitudes</p>
@@ -305,7 +307,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
             <li>On mesure le temps gagné</li>
             <li>Questions par message entre les séances</li>
           </ul>
-          <a class="pick" href="#reserver" data-format="Pack 3 séances (390 €)">Réserver →</a>
+          <a class="pick" href="https://cal.com/einatguedj/pack-claude" target="_blank" rel="noopener">Choisir mes créneaux →</a>
         </article>
         <article class="offer">
           <p class="label">Pour les équipes</p>
@@ -316,7 +318,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
             <li>Programme adapté à votre activité</li>
             <li>Mémo et modèles partagés à l'équipe</li>
           </ul>
-          <a class="pick" href="#reserver" data-format="Atelier d'équipe (800 €)">Demander un devis →</a>
+          <a class="pick" href="https://cal.com/einatguedj/atelier-equipe" target="_blank" rel="noopener">Préparer l'atelier →</a>
         </article>
       </div>
     </div>
@@ -412,8 +414,13 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       <div class="section-head" style="margin-bottom:0">
         <p class="label">Réserver</p>
         <h2>Dites-moi ce qui vous prend du temps</h2>
-        <p>Le plus simple : choisissez un créneau pour l'appel découverte de 10 minutes, en visio. Pour réserver directement une séance ou un atelier, remplissez le formulaire : il prépare votre message, que vous m'envoyez par mail ou par WhatsApp.</p>
-        <a class="btn btn-primary" href="https://cal.com/einatguedj/formation" target="_blank" rel="noopener" style="justify-self:start">Choisir un créneau sur Cal.com</a>
+        <p>Choisissez directement votre créneau en ligne. Vous hésitez sur le format ? Commencez par l'appel découverte de 10 minutes. Vous préférez m'écrire ? Le formulaire prépare votre message, à m'envoyer par mail ou par WhatsApp.</p>
+        <div class="cal-links">
+          <a class="btn btn-primary" href="https://cal.com/einatguedj/formation" target="_blank" rel="noopener">Appel découverte · 10 min · offert</a>
+          <a class="btn btn-ghost" href="https://cal.com/einatguedj/seance-claude" target="_blank" rel="noopener">Séance individuelle · 1 h 30 · 150 €</a>
+          <a class="btn btn-ghost" href="https://cal.com/einatguedj/pack-claude" target="_blank" rel="noopener">Pack 3 séances · 390 €</a>
+          <a class="btn btn-ghost" href="https://cal.com/einatguedj/atelier-equipe" target="_blank" rel="noopener">Atelier d'équipe · appel de préparation</a>
+        </div>
         <div class="contact-lines">
           <div><span class="label">Mail</span><span>einat.guedj@gmail.com</span></div>
           <div><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/einat-guedj" target="_blank" rel="noopener">linkedin.com/in/einat-guedj</a></div>
