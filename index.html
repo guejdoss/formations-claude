@@ -97,6 +97,7 @@ nav.links .btn { padding: 9px 18px; background: var(--ink); color: var(--bg); fo
 .demo-note { font-size: 0.8rem; color: var(--ink-soft); }
 
 section { padding-block: 64px; }
+section[id] { scroll-margin-top: var(--head-h, 76px); }
 @media (max-width: 560px) { section { padding-block: 48px; } .hero { padding-block: 36px 44px; } }
 section.alt { background: var(--bg-2); }
 .section-head { display: grid; gap: 10px; max-width: none; margin-bottom: 28px; }
@@ -217,7 +218,7 @@ textarea { min-height: 110px; resize: vertical; }
 .choix button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 .booking { border-radius: 14px; overflow: auto; }
 .booking:has(iframe) { min-height: 380px; max-height: max(380px, calc(100svh - 330px)); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
-#reserver { padding-top: 28px; scroll-margin-top: 64px; }
+#reserver { padding-top: 28px; }
 #reserver > .wrap:first-child .section-head { gap: 6px; margin-bottom: 16px; }
 #reserver > .wrap:first-child .section-head h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
 #reserver > .wrap:first-child .section-head p.one-line { font-size: 1rem; }
@@ -637,6 +638,10 @@ form.addEventListener("submit", ev => {
   choix.addEventListener("click", e => { const b = e.target.closest("button"); if (b) show(b.dataset.pick); });
   document.querySelectorAll("a[data-slug]").forEach(a => a.addEventListener("click", () => show(a.dataset.slug)));
 })();
+
+// Hauteur réelle de l'en-tête fixe, pour que les liens du menu ne coupent pas les titres.
+const setHead = () => document.documentElement.style.setProperty("--head-h", document.querySelector("header.top").offsetHeight + "px");
+setHead(); addEventListener("resize", setHead);
 </script>
 
 </body>
