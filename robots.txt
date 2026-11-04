@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://guejdoss.github.io/formations-claude/sitemap.xml

@@ -1,0 +1,18 @@
+name: Référencement automatique
+# À chaque mise à jour du site, prévient Bing (et Yandex, Seznam, Naver) via IndexNow
+# pour que les pages modifiées soient revisitées rapidement. Gratuit, sans compte.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Attendre la mise en ligne GitHub Pages
+        run: sleep 90
+      - name: Signaler les pages à IndexNow
+        run: |
+          curl -sS -o /dev/null -w "IndexNow : %{http_code}\n" -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{"host":"guejdoss.github.io","key":"b1309f2a1d5f431e8e672e039030e394","keyLocation":"https://guejdoss.github.io/formations-claude/b1309f2a1d5f431e8e672e039030e394.txt","urlList":["https://guejdoss.github.io/formations-claude/","https://guejdoss.github.io/formations-claude/sitemap.xml"]}'
