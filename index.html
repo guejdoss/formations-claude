@@ -130,8 +130,6 @@ section.alt { background: var(--bg-2); }
 .offer .price small { font-size: 0.9rem; font-weight: 500; letter-spacing: 0; color: var(--ink-soft); margin-left: 4px; }
 .offer ul { margin: 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.93rem; display: grid; gap: 6px; align-content: start; line-height: 1.5; }
 .offer a.pick { font-weight: 600; font-size: 0.95rem; text-decoration: none; }
-@media (max-width: 980px) { .offers { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .offers { grid-template-columns: minmax(0, 1fr); } }
 
 .session { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 64px; align-items: start; }
 .bar { display: flex; height: 8px; gap: 4px; margin: 6px 0 24px; }
@@ -156,7 +154,6 @@ ol.steps p { color: var(--ink-soft); font-size: 0.96rem; }
 .module { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 28px; display: grid; gap: 8px; align-content: start; }
 .module .tool { font-size: 0.82rem; font-weight: 600; color: var(--accent); }
 .module p { color: var(--ink-soft); }
-@media (max-width: 680px) { .modules { grid-template-columns: minmax(0, 1fr); } }
 
 .audience { display: flex; flex-wrap: wrap; gap: 10px; }
 .audience span { font-weight: 500; font-size: 0.95rem; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; }
@@ -165,8 +162,6 @@ ol.steps p { color: var(--ink-soft); font-size: 0.96rem; }
 .about-text { display: grid; gap: 16px; }
 .about-text p { color: var(--ink-soft); max-width: 92ch; font-size: 1.08rem; }
 .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
-@media (max-width: 1000px) { .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; } }
-@media (max-width: 560px) { .facts { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; } }
 .fact { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; align-items: start; background: var(--bg-2); border-radius: var(--radius); padding: 18px 16px; height: 100%; }
 .logo-box { display: flex; align-items: center; margin-top: 10px; }
 .logo-box.plate { background: #ffffff; border-radius: 6px; padding: 0 10px; height: 36px; }
@@ -221,8 +216,6 @@ textarea { min-height: 110px; resize: vertical; }
 .cases-cta p { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.015em; line-height: 1.35; margin: 0; flex: 1 1 320px; }
 .cases-cta .btn { flex: none; }
 .cases-cta .btn-primary { background: var(--bg); color: var(--ink); }
-@media (max-width: 900px) { .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .cases { grid-template-columns: minmax(0, 1fr); } }
 
 .send-row { display: flex; flex-wrap: wrap; gap: 10px; }
 @media (max-width: 560px) { .send-row { display: grid; grid-template-columns: minmax(0, 1fr); } .send-row .btn { width: 100%; justify-content: center; } }
@@ -255,6 +248,20 @@ footer { border-top: 1px solid var(--line); padding-block: 22px; color: var(--in
 footer .wrap { row-gap: 8px; }
 .legal summary { font-size: 0.8rem; }
 footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+/* Cartes sur une seule ligne, avec défilement horizontal. */
+.cases, .modules { display: grid; grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: calc((100% - 32px) / 3); }
+@media (max-width: 1000px) { .cases, .modules { grid-auto-columns: calc((100% - 16px) / 2); } }
+@media (max-width: 1000px) {
+  .offers, .facts { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: calc((100% - 16px) / 2); }
+}
+.cases, .modules, .offers, .facts { overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 2px; overscroll-behavior-x: contain; scrollbar-width: thin; padding: 2px 2px 12px; }
+.cases > *, .modules > *, .offers > *, .facts > * { scroll-snap-align: start; }
+@media (max-width: 560px) { .cases, .modules, .offers, .facts { grid-auto-columns: 84%; } }
+.rail-nav { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+.rail-nav[hidden] { display: none; }
+.rail-nav button { width: 38px; height: 38px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink); font: inherit; font-size: 1.1rem; cursor: pointer; display: grid; place-items: center; }
+.rail-nav button:disabled { opacity: .35; cursor: default; }
 </style>
 </head>
 <body>
@@ -656,6 +663,23 @@ form.addEventListener("submit", ev => {
 // Hauteur réelle de l'en-tête fixe, pour que les liens du menu ne coupent pas les titres.
 const setHead = () => document.documentElement.style.setProperty("--head-h", document.querySelector("header.top").offsetHeight + "px");
 setHead(); addEventListener("resize", setHead);
+
+// Flèches de défilement pour les rangées de cartes (affichées seulement si tout ne tient pas).
+document.querySelectorAll(".cases, .modules, .offers, .facts").forEach(rail => {
+  const nav = document.createElement("div"); nav.className = "rail-nav";
+  nav.innerHTML = '<button type="button" aria-label="Cartes précédentes">‹</button><button type="button" aria-label="Cartes suivantes">›</button>';
+  rail.after(nav);
+  const [prev, next] = nav.querySelectorAll("button");
+  const step = () => rail.firstElementChild.getBoundingClientRect().width + 16;
+  prev.onclick = () => rail.scrollBy({ left: -step(), behavior: "smooth" });
+  next.onclick = () => rail.scrollBy({ left: step(), behavior: "smooth" });
+  const sync = () => {
+    const max = rail.scrollWidth - rail.clientWidth;
+    nav.hidden = max < 4;
+    prev.disabled = rail.scrollLeft < 4; next.disabled = rail.scrollLeft > max - 4;
+  };
+  rail.addEventListener("scroll", sync, { passive: true }); addEventListener("resize", sync); sync();
+});
 </script>
 
 </body>
